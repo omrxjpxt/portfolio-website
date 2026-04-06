@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  --color-navy-900: #0a0f1c;
+  --color-navy-800: #121b2f;
+  --color-navy-700: #1a2744;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--color-navy-900);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glow utility */
+.glow-effect {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(10, 15, 28, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 400px;
+  /* FIXED reference */
+}
+
+.avatar-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,150,255,0.25), transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.avatar {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* eye containers */
+.eye {
+  position: absolute;
+  width: 11.5%;
+  height: 8.5%;
+  background: white;
+  /* Cover baked-in eyes */
+  border-radius: 50% 50% 45% 45%;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 2px 6px rgba(0,0,0,0.25),
+    0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Gloss effect on the eye surface */
+.eye::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* place eyes ON the face */
+.eye-left {
+  top: 27%;
+  left: 35.5%;
+}
+
+.eye-right {
+  top: 27%;
+  left: 53%;
+}
+
+/* Iris - The colored part */
+.iris {
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  background: radial-gradient(circle, #7b5b48 0%, #392820 100%); /* Warm brown tone */
+  border-radius: 50%;
+  top: 17.5%;
+  left: 17.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Pupil - The dark center */
+.pupil {
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Reflection Highlight */
+.eye-highlight {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 15%;
+  height: 15%;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  z-index: 2;
+}
+
+.eyelid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f1b39a;
+  border-radius: 50%;
+  transform: translateY(-100%);
+  /* start hidden above */
+  z-index: 4; /* Now above the gloss and everything else */
+}
