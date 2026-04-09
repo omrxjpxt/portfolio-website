@@ -121,16 +121,6 @@ const SmartSpend = () => {
             {/* Buttons */}
             <div className="flex flex-wrap gap-6 pt-6">
               <a 
-                href="#" 
-                className="relative group overflow-hidden px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:scale-[1.05] active:scale-95"
-              >
-                <div className="relative z-10 flex items-center gap-2">
-                  <span>Live Demo</span>
-                  <ExternalLink size={20} />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </a>
-              <a 
                 href="https://github.com/omrxjpxt/smartspend-ai" 
                 target="_blank"
                 rel="noopener noreferrer"

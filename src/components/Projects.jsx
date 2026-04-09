@@ -91,13 +91,6 @@ const Projects = () => {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-6">
               <a 
-                href="#" 
-                className="group flex items-center gap-2 px-8 py-3.5 bg-white text-black rounded-full font-medium transition-all duration-300 hover:bg-sky-50 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:scale-[1.05] active:scale-95"
-              >
-                <span>Live Demo</span>
-                <ExternalLink size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </a>
-              <a 
                 href="https://github.com/omrxjpxt/face-particle-tracking" 
                 target="_blank"
                 rel="noopener noreferrer"
