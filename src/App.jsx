@@ -3,7 +3,6 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
-import SmartSpend from './components/SmartSpend'
 import Contact from './components/Contact'
 import gsap from 'gsap'
 
@@ -22,7 +21,6 @@ function App() {
       <Hero />
       <About />
       <Projects />
-      <SmartSpend />
       <Contact />
       {/* Additional sections will be rendered below */}
     </div>
