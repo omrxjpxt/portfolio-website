@@ -219,7 +219,7 @@ const Projects = () => {
         </div>
 
         {/* ── Filter Bar ── */}
-        <div className="mb-14 flex flex-wrap gap-2">
+        <div className="mb-14 flex flex-wrap justify-center md:justify-start gap-2 md:gap-3">
           {filters.map((f) => {
             const isActive = activeFilter === f.key;
             return (
@@ -227,7 +227,8 @@ const Projects = () => {
                 key={f.key}
                 onClick={() => handleFilterChange(f.key)}
                 className={`
-                  px-6 py-2.5 rounded-full text-sm font-medium tracking-wide
+                  min-w-fit px-4 py-2 text-xs rounded-full font-medium tracking-wide
+                  md:px-6 md:py-2.5 md:text-sm
                   transition-all duration-300 cursor-pointer
                   ${isActive
                     ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.08)]'
