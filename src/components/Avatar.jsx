@@ -72,7 +72,7 @@ const Avatar = () => {
 
   return (
     <div 
-       className="relative w-72 h-72 lg:w-[400px] lg:h-[400px] mx-auto select-none pointer-events-none" 
+       className="relative w-[220px] h-[220px] sm:w-72 sm:h-72 lg:w-[400px] lg:h-[400px] mx-auto select-none pointer-events-none" 
        style={{ perspective: 1000 }}
     >
       <div className="absolute inset-0 bg-sky-500/10 rounded-full blur-[100px] z-0 pointer-events-none" />
