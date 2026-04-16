@@ -2,6 +2,36 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 
 /* ───────────────────────── Project Data ───────────────────────── */
+/* ── Theme presets for per-project colouring ── */
+const themes = {
+  sky: {
+    badgeBg: 'bg-sky-500/10',
+    badgeText: 'text-sky-400',
+    badgeBorder: 'border-sky-500/20',
+    ribbon: 'from-sky-500 to-blue-600',
+    ribbonShadow: 'shadow-sky-500/20',
+    cardBorder: 'border-sky-500/20',
+    cardGlow: 'shadow-[0_0_40px_rgba(56,189,248,0.04)]',
+    hoverGlow: 'shadow-[0_20px_60px_rgba(56,189,248,0.06)]',
+    mediaGlowFrom: 'from-sky-500/20',
+    mediaGlowTo: 'to-blue-600/20',
+    techText: 'text-sky-300',
+  },
+  amber: {
+    badgeBg: 'bg-amber-500/10',
+    badgeText: 'text-amber-400',
+    badgeBorder: 'border-amber-500/20',
+    ribbon: 'from-amber-500 to-orange-600',
+    ribbonShadow: 'shadow-amber-500/20',
+    cardBorder: 'border-amber-500/20',
+    cardGlow: 'shadow-[0_0_40px_rgba(245,158,11,0.06)]',
+    hoverGlow: 'shadow-[0_20px_60px_rgba(245,158,11,0.08)]',
+    mediaGlowFrom: 'from-amber-500/20',
+    mediaGlowTo: 'to-orange-600/20',
+    techText: 'text-amber-300',
+  },
+};
+
 const projects = [
   {
     id: 'luxora',
@@ -12,9 +42,24 @@ const projects = [
     badge: 'Client Work',
     featured: true,
     category: 'client',
+    theme: 'sky',
     github: 'https://github.com/omrxjpxt/Luxora-Collectibles-',
     live: 'https://luxora-collectibles.vercel.app/',
     media: { type: 'image', src: '/projects/luxora.png' },
+  },
+  {
+    id: 'anvadhya-weather',
+    title: 'Weather Web App',
+    description:
+      'A premium frontend weather application with live forecasts, geolocation search, dynamic weather-based themes, and smooth animations. Built for a client using React, Tailwind CSS, Framer Motion, and Open-Meteo API.',
+    stack: ['React', 'TailwindCSS', 'Framer Motion', 'Axios', 'Open-Meteo API'],
+    badge: 'Client Work',
+    featured: true,
+    category: 'client',
+    theme: 'amber',
+    github: 'https://github.com/omrxjpxt/anvadhya-weather',
+    live: 'https://weather-check-webapp-om.vercel.app/',
+    media: { type: 'image', src: '/projects/anvadhya-weather.png' },
   },
   {
     id: 'smartspend',
@@ -25,6 +70,7 @@ const projects = [
     badge: 'AI Project',
     featured: false,
     category: 'experiment',
+    theme: 'sky',
     github: 'https://github.com/omrxjpxt/smartspend-ai',
     media: { type: 'video', src: '/projects/smart_spend_new.mov' },
   },
@@ -37,6 +83,7 @@ const projects = [
     badge: 'Computer Vision',
     featured: false,
     category: 'experiment',
+    theme: 'sky',
     github: 'https://github.com/omrxjpxt/face-particle-tracking',
     media: { type: 'video', src: '/projects/face-tracker.mp4' },
   },
@@ -52,6 +99,7 @@ const filters = [
 /* ───────────────────────── Project Card ─────────────────────────── */
 const ProjectCard = ({ project }) => {
   const isFeatured = project.featured;
+  const t = themes[project.theme] || themes.sky;
 
   return (
     <div
@@ -60,16 +108,16 @@ const ProjectCard = ({ project }) => {
         p-6 sm:p-8 md:p-10 rounded-[1.5rem] md:rounded-[2rem]
         border bg-white/[0.02] backdrop-blur-sm
         transition-all duration-500 ease-out
-        hover:bg-white/[0.04] hover:shadow-[0_20px_60px_rgba(56,189,248,0.06)]
+        hover:bg-white/[0.04]
         ${isFeatured
-          ? 'border-sky-500/20 shadow-[0_0_40px_rgba(56,189,248,0.04)]'
+          ? `${t.cardBorder} ${t.cardGlow} hover:${t.hoverGlow}`
           : 'border-white/5 hover:border-white/10'}
       `}
     >
       {/* Featured ribbon */}
       {isFeatured && (
         <div className="absolute -top-px left-8 sm:left-12">
-          <div className="px-4 py-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-b-lg text-[11px] font-semibold uppercase tracking-wider text-white shadow-lg shadow-sky-500/20">
+          <div className={`px-4 py-1 bg-gradient-to-r ${t.ribbon} rounded-b-lg text-[11px] font-semibold uppercase tracking-wider text-white shadow-lg ${t.ribbonShadow}`}>
             Featured
           </div>
         </div>
@@ -82,7 +130,7 @@ const ProjectCard = ({ project }) => {
           className={`
             inline-block px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider border
             ${project.category === 'client'
-              ? 'bg-sky-500/10 text-sky-400 border-sky-500/20'
+              ? `${t.badgeBg} ${t.badgeText} ${t.badgeBorder}`
               : 'bg-white/5 text-slate-400 border-white/10'}
           `}
         >
@@ -91,9 +139,8 @@ const ProjectCard = ({ project }) => {
 
         {/* Title */}
         <h3
-          className={`font-poppins font-bold text-white leading-tight ${
-            isFeatured ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'
-          }`}
+          className={`font-poppins font-bold text-white leading-tight ${isFeatured ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl'
+            }`}
         >
           {project.title}
         </h3>
@@ -108,7 +155,7 @@ const ProjectCard = ({ project }) => {
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-sky-300 backdrop-blur-sm"
+              className={`px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 border border-white/10 ${t.techText} backdrop-blur-sm`}
             >
               {tech}
             </span>
@@ -144,15 +191,15 @@ const ProjectCard = ({ project }) => {
       <div className="w-full lg:w-1/2 order-1 lg:order-2">
         <div className="relative group/media">
           {/* Hover glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-sky-500/20 to-blue-600/20 rounded-[2rem] blur-2xl opacity-0 group-hover/media:opacity-100 transition-opacity duration-700" />
+          <div className={`absolute -inset-1 bg-gradient-to-r ${t.mediaGlowFrom} ${t.mediaGlowTo} rounded-[2rem] blur-2xl opacity-0 group-hover/media:opacity-100 transition-opacity duration-700`} />
 
           <div className="relative rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden border border-white/10 bg-slate-900 shadow-2xl">
             {project.media.type === 'video' ? (
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               >
                 <source src={project.media.src} type="video/mp4" />
@@ -243,7 +290,7 @@ const Projects = () => {
 
         {/* ── Project Cards ── */}
         <div
-          className="flex flex-col gap-12 md:gap-16"
+          className="flex flex-col gap-12 md:gap-16 min-h-[1600px] md:min-h-[1200px]"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
