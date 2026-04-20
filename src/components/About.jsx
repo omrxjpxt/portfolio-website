@@ -27,8 +27,8 @@ const About = () => {
       });
 
       // Fade in cards
-      gsap.fromTo(cardsRef.current.children, 
-        { 
+      gsap.fromTo(cardsRef.current.children,
+        {
           y: 20,
           opacity: 0,
           scale: 0.95
@@ -53,8 +53,8 @@ const About = () => {
   }, []);
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={sectionRef}
       className="relative w-full py-24 md:py-32 px-6 overflow-hidden bg-[#050814]"
     >
@@ -63,7 +63,7 @@ const About = () => {
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
+
           {/* Left Column: Text */}
           <div ref={textRef} className="w-full lg:w-3/5 space-y-8">
             <div className="space-y-4">
@@ -71,7 +71,7 @@ const About = () => {
                 About Me
               </h2>
               <h3 className="text-4xl md:text-5xl font-bold font-poppins text-white leading-tight">
-                Crafting the future with <br/> 
+                Crafting the future with <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">
                   Code & Intelligence
                 </span>
@@ -79,17 +79,20 @@ const About = () => {
             </div>
 
             <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-2xl">
-              I’m Om Gangwar, a B.Tech CSE (<span className="text-sky-400 font-normal">AI</span> & DS) student focused on building real-world projects. 
-              I specialize in creating <span className="text-white font-medium">real-time</span> <span className="text-sky-400 font-normal">AI</span> systems 
-              and interactive web experiences using Python, OpenCV, and modern web technologies. 
-              Currently, I’m working on improving my <span className="text-white font-medium">full-stack</span> and <span className="text-sky-400 font-normal">AI</span> skills 
-              while building projects that actually solve problems.
+              I'm Om Gangwar, a Full Stack Developer and AI-focused builder creating modern websites, automation systems, and intelligent web applications.
+
+              I specialize in responsive web experiences, real-time AI tools, portfolio websites, business websites, and custom automation workflows using React, Next.js, Python, OpenCV, and modern web technologies.
+
+              Alongside my B.Tech in CSE (AI & DS), I work with clients to turn ideas into clean, fast, and professional digital products.
+
+              My focus is simple: build projects that look premium, solve real problems, and create actual value.
+
             </p>
           </div>
 
           {/* Right Column: Stats/Cards */}
           <div ref={cardsRef} className="w-full lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-            
+
             {/* Projects Card */}
             <div className="group p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-sky-500/30 transition-all duration-500">
               <div className="flex items-center gap-4">
