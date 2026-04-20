@@ -84,7 +84,7 @@ const projects = [
     featured: false,
     category: 'experiment',
     theme: 'sky',
-    github: 'https://github.com/omrxjpxt/face-particle-tracking',
+    github: 'https://github.com/omrxjpxt/face-particle-tracker',
     media: { type: 'video', src: '/projects/fpt-video.mp4' },
   },
 ];
