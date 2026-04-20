@@ -57,7 +57,7 @@ const projects = [
     featured: true,
     category: 'client',
     theme: 'amber',
-    github: 'https://github.com/omrxjpxt/anvadhya-weather',
+    github: 'https://github.com/omrxjpxt/weather-app',
     live: 'https://weather-check-webapp-om.vercel.app/',
     media: { type: 'image', src: '/projects/anvadhya-weather.png' },
   },
